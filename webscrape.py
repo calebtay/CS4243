@@ -78,9 +78,9 @@ def search_and_download(search_term:str,target_path='./images',number_images=5):
     if not os.path.exists(target_folder):
         os.makedirs(target_folder)
     options = webdriver.ChromeOptions()
-    options.binary_location = "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+    options.binary_location = "/usr/bin/google-chrome"
     # with webdriver.Chrome(executable_path=driver_path) as wd:
-    with webdriver.Chrome("/home/cc/.wdm/drivers/chromedriver/linux64/99.0.4844.51/chromedriver", options=options) as wd:#executable_path=driver_path) as wd:
+    with webdriver.Chrome("/home/cc/Downloads/chromedriver", options=options) as wd:#executable_path=driver_path) as wd:
         res = fetch_image_urls(search_term, number_images, wd=wd, sleep_between_interactions=0.5)
         
     for elem in res:
