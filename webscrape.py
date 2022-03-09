@@ -72,7 +72,7 @@ def persist_image(folder_path:str,url:str):
     except Exception as e:
         print(f"ERROR - Could not save {url} - {e}")
 
-def search_and_download(search_term:str,target_path='./images',number_images=5):
+def search_and_download(search_term:str,target_path='./images',number_images=100):
     target_folder = os.path.join(target_path,'_'.join(search_term.lower().split(' ')))
 
     if not os.path.exists(target_folder):
@@ -86,5 +86,6 @@ def search_and_download(search_term:str,target_path='./images',number_images=5):
     for elem in res:
         persist_image(target_folder,elem)
 
-search_term = "Dog"
-search_and_download(search_term=search_term)
+search_terms = ["german shepherd", "labrador", "golden retriever", "pomeranian", "siberian husky", "bulldog", "poodle", "chihuahua", "samoyed", "jack russell terrier"]
+for term in search_terms:
+    search_and_download(search_term=term)
