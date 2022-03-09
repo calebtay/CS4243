@@ -57,7 +57,7 @@ def fetch_image_urls(query:str, max_links_to_fetch:int, wd:webdriver, sleep_betw
 
 def persist_image(folder_path:str,url:str):
     try:
-        image_content = requests.get(url).content
+        image_content = requests.get(url, timeout = 10).content
 
     except Exception as e:
         print(f"ERROR - Could not download {url} - {e}")
@@ -86,6 +86,7 @@ def search_and_download(search_term:str,target_path='./images',number_images=100
     for elem in res:
         persist_image(target_folder,elem)
 
-search_terms = ["german shepherd", "labrador", "golden retriever", "pomeranian", "siberian husky", "bulldog", "poodle", "chihuahua", "samoyed", "jack russell terrier"]
+#search_terms = #["german shepherd", "labrador" 
+search_terms = ["labrador"]#"golden retriever", "pomeranian", "siberian husky", "bulldog", "poodle", "chihuahua", "samoyed", "jack russell terrier"]
 for term in search_terms:
     search_and_download(search_term=term)
